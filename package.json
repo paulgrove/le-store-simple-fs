@@ -1,0 +1,30 @@
+{
+  "name": "le-store-simple-fs",
+  "version": "1.0.0",
+  "description": "Store Lets Encrypt using a simple filesystem layout",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "file-system-store": "^1.1.2",
+    "homedir": "^0.6.0",
+    "mkdirp": "^0.5.1",
+    "mongo-portable": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "rm -rf ./test-database && node tests/basic.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulgrove/le-store-simple-fs.git"
+  },
+  "author": "Paul Grove",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulgrove/le-store-simple-fs/issues"
+  },
+  "homepage": "https://github.com/paulgrove/le-store-simple-fs#readme"
+}

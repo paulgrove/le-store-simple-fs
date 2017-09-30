@@ -1,8 +1,10 @@
 'use strict';
 
-var PromiseA = require('bluebird');
+var PromiseA = require('bluebird'),
+	fs = require("fs");
 var leStore = PromiseA.promisifyAll(require('../').create({
-  debug: true
+  path: "./test-database",
+  debug: false
 }));
 leStore.accounts = PromiseA.promisifyAll(leStore.accounts);
 leStore.certificates = PromiseA.promisifyAll(leStore.certificates);
@@ -77,7 +79,8 @@ var tests = [
         if (keypair.privateKeyJwk) {
           throw new Error("Error in test itself (not your fault). TODO: implement checking privateKeyJwk.");
         }
-        throw new Error("agreeTos should return false or null because it was not set.");
+		  console.log("HEY", goodGuy.keypair, "eq", keypair);
+		throw new Error("agreeTos should return false or null because it was not set.");
       }
     });
   }
@@ -103,6 +106,8 @@ var tests = [
       if (!account || !account.id || !account.email) {
         throw new Error('accounts.set should return the object with its new `id` attached');
       }
+	if (!account.agreeTos)
+	    throw new Error("account.set not keeping agreeTos");
 
       goodGuy.accountId = account.id;
     });
